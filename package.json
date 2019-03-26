@@ -1,5 +1,5 @@
 {
-  "name": "@okfe/okex-node2",
+  "name": "okex-node1024",
   "version": "0.0.52",
   "description": "The Node.js library for OKEx V3 API.",
   "main": "build/main/index.js",
