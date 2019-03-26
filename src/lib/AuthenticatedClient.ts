@@ -18,6 +18,17 @@ export function AuthenticatedClient(
     ...axiosConfig
   });
 
+  const handleRequestError = (error: any, url: string) => {
+    console.log(
+      error.response && error.response !== undefined && error.response.data
+        ? JSON.stringify(error.response.data)
+        : error
+    );
+    console.log(error.messge ? error.messge : `${url} error`);
+    //we need the error
+    throw error;
+  };
+
   const signRequest = (
     method: string,
     path: string,
@@ -57,12 +68,7 @@ export function AuthenticatedClient(
       .get(url, { params, headers: { ...getSignature('get', url) } })
       .then(res => res.data)
       .catch(error => {
-        console.log(
-          error.response && error.response !== undefined && error.response.data
-            ? JSON.stringify(error.response.data)
-            : error
-        );
-        console.log(error.messge ? error.messge : `${url} error`);
+        handleRequestError(error, url);
       });
   }
 
@@ -82,12 +88,7 @@ export function AuthenticatedClient(
       })
       .then(res => res.data)
       .catch(error => {
-        console.log(
-          error.response && error.response !== undefined && error.response.data
-            ? JSON.stringify(error.response.data)
-            : error
-        );
-        console.log(error.messge ? error.messge : `${url} error`);
+        handleRequestError(error, url);
       });
   }
 
@@ -107,12 +108,7 @@ export function AuthenticatedClient(
       })
       .then(res => res.data)
       .catch(error => {
-        console.log(
-          error.response && error.response !== undefined && error.response.data
-            ? JSON.stringify(error.response.data)
-            : error
-        );
-        console.log(error.messge ? error.messge : `${url} error`);
+        handleRequestError(error, url);
       });
   }
 

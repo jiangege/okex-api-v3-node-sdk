@@ -13,18 +13,24 @@ export function PublicClient(
     timeout,
     ...axiosConfig
   });
+  
+  const handleRequestError = (error: any, url: string) => {
+    console.log(
+      error.response && error.response !== undefined && error.response.data
+        ? JSON.stringify(error.response.data)
+        : error
+    );
+    console.log(error.messge ? error.messge : `${url} error`);
+    //we need the error
+    throw error;
+  };
 
   async function get(url: string, params?: object): Promise<any> {
     return axiosInstance
       .get(url, { params })
       .then((res: { readonly data: any }) => res.data)
       .catch(error => {
-        console.log(
-          error.response && error.response !== undefined
-            ? JSON.stringify(error.response.data)
-            : error
-        );
-        console.log(error.messge ? error.messge : `${url} error`);
+        handleRequestError(error, url);
       });
   }
 
