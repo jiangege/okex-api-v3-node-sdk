@@ -25,7 +25,7 @@ export function AuthenticatedClient(
         : error
     );
     console.log(error.messge ? error.messge : `${url} error`);
-    //we need the error
+    // we need the error
     throw error;
   };
 
