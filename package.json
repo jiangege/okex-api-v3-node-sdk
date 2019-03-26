@@ -1,11 +1,11 @@
 {
-  "name": "@okfe/okex-node",
-  "version": "0.0.50",
+  "name": "@okfe/okex-node2",
+  "version": "0.0.48",
   "description": "The Node.js library for OKEx V3 API.",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
-  "repository": "https://github.com/okcoin-okex/okex-api-v3-node-sdk",
+  "repository": "https://github.com/jiangege/okex-api-v3-node-sdk",
   "license": "MIT",
   "keywords": [],
   "scripts": {
